@@ -10,7 +10,7 @@ For example, if you are given the number 15, there are 3 possibilities to compos
 
 The following function shows one way to solve the problem but the code is not ideal or efficient.
 Refactor the code based on what you have learned about code simplicity and efficiency.
-"""
+
 
 def my_function(X):
     solutions = []
@@ -28,3 +28,19 @@ def my_function(X):
 X = input("What is the maximal length of the triangle side? Enter a number: ")
 
 print("The longest side possible is " + str(my_function(int(X))))
+"""
+
+def my_function(X):
+    for x in reversed(range(5, X)):
+        for y in reversed(range(4, x)):
+            for z in reversed(range(3, y)):
+                if (x*x==y*y+z*z):
+                  return x
+
+
+
+X = input("What is the maximal length of the triangle side? Enter a number: ")
+
+print("The longest side possible is " + str(my_function(int(X))))
+
+
