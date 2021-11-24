@@ -8,12 +8,20 @@ expects.
 The code is very long and messy. Refactor it according to what you have learned about
 code simplicity and efficiency.
 """
-
+'''
+from num2words import num2words
 print('Welcome to this calculator!')
 print('It can add and subtract whole numbers from zero to five')
 a = input('Please choose your first number (zero to five): ')
 b = input('What do you want to do? plus or minus: ')
 c = input('Please choose your second number (zero to five): ')
+
+valid_values = ['zero','one','two','three','four','five']
+valid_oper = ['plus','minus']
+valid_val = {}
+
+if a in valid_values and b in valid_oper and c in valid_values:
+    print(f'{a} {b} {c} equals ')
 
 if a == 'zero' and b == 'plus'  and c == 'zero':
     print("zero plus zero equals zero")
@@ -162,8 +170,30 @@ if a == 'five' and b == 'minus' and c == 'four':
 if a == 'five' and b == 'minus' and c == 'five':
     print("five minus five equals zero")
 
-
 if (not a == 'zero' and not a == 'one' and not a == 'two' and not a == 'three' and not a == 'four' and not a == 'five') or (not c == 'zero' and not c == 'one' and not c == 'two' and not c == 'three' and not c == 'four' and not c == 'five') or (not b == 'plus' and not b == 'minus'):
+    print("I am not able to answer this question. Check your input.")
+
+print("Thanks for using this calculator, goodbye :)")
+'''
+
+from num2words import num2words
+from word2number import w2n
+
+print('Welcome to this calculator!')
+print('It can add and subtract whole numbers from zero to five')
+a = input('Please choose your first number (zero to five): ')
+b = input('What do you want to do? plus or minus: ')
+c = input('Please choose your second number (zero to five): ')
+
+valid_values = ['zero','one','two','three','four','five']
+valid_oper = ['plus','minus']
+if a in valid_values and b in valid_oper and c in valid_values:
+    if b == 'minus':
+        res = num2words(w2n.word_to_num(a)-w2n.word_to_num(c))
+    else:
+        res = num2words(w2n.word_to_num(a)+w2n.word_to_num(c))
+    print(f'{a} {b} {c} equals {res}')
+else:
     print("I am not able to answer this question. Check your input.")
 
 print("Thanks for using this calculator, goodbye :)")
